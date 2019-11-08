@@ -112,10 +112,10 @@ server <- function(input, output) {
                 on.exit(setwd(userDir))
                 
                 # create list of dataframes and NULL value to store fileNames
-                listDataFrames <- list(output_file = head(text_df, 25), 
+                listDataFrames = list(output_file = head(text_df, 25), 
                                        settings_file = settingsdf,
                                        input_file = userText)
-                allFileNames <- NULL
+                allFileNames = NULL
                 
                 # Loop through each dataframe
                 for(i in 1:length(listDataFrames)) {
@@ -128,7 +128,8 @@ server <- function(input, output) {
                 # write the zip file
                 zip(file, allFileNames) 
                 
-            }
+            }, 
+        contentType = "application/zip"
         )
     })
     
